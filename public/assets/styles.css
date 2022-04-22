@@ -1,5 +1,114 @@
+/* -------------------- Root */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
+main {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+/* -------------------- Main container */
+
+#main-container {
+  width: 600px;
+  height: 250px;
+}
+
+/* -------------------- Main header */
+#main-header {
+  height: 15%;
+  padding: 10px 10px;
+  background-color: rgb(73, 207, 162);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#main-header p {
+  font-size: 15px;
+  color: white;
+}
+
+#main-header button {
+  cursor: pointer;
+  color: white;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+}
+
+/* -------------------- Main body */
+
+#main-body {
+  border: 1px solid rgb(185, 185, 185);
+  height: 100%;
+  display: flex;
+}
+/* ------- Note list */
+#note-list {
+  overflow-y: scroll;
+  border-right: 1px solid rgb(185, 185, 185);
+  width: 30%;
+  height: 100%;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 10px 10px;
+  border-bottom: 1px solid rgb(185, 185, 185);
+}
+
+.note img {
+  width: 15px;
+}
+
+.trash {
+  cursor: pointer;
+}
+/* ------- Note body */
+#note-editor {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#note-title,
+#note-body {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 3px 0;
+}
+
+#note-title {
+  font-size: 30px;
+}
+
+#note-body {
+  font-size: 15px;
+}
+
+/*    <section id="main-container">
+        <div id="main-header">
+          <p>Note Taker</p>
+          <button>+</button>
+        </div>
+        <div id="main-body">
+          <div id="note-list">
+            <div id="note-1">Call bank</div>
+            <div id="note-2">Finish payroll</div>
+            <div id="note-3">Call client</div>
+          </div>
+          <div id="note-editor">
+            <input id="note-title" type="text" placeholder="Note title" />
+            <input id="note-text" type="text" placeholder="Note text" />
+          </div>
+        </div>
+      </section> */
