@@ -10,14 +10,14 @@ router.use(express.static('./public'));
 router.post('/preview', (req, res) => {
   // Add function to push the note to an array and to the existing JSON
   // And load up /notes.html page with the new note that was just added
-  res.sendFile(path.join(__dirname, '../public/notes.html'));
+  res.sendFile(path.join(__dirname, '../public/notes-preview.html'));
 });
 
 // When the form submits, execute this function:
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
   // Add function to push the note to an array and to the existing JSON
   // And load up /notes.html page with the new note that was just added
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  res.sendFile(path.join(__dirname, '../public/notes-editor.html'));
 });
 
 module.exports = router;

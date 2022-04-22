@@ -22,10 +22,6 @@ app.get('/api/notes', (req, res) => {
   res.json(noteDb);
 });
 
-app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-});
-
 // Require our user routes and include all the methods so we can navigate through our app
 const userRouter = require('./routes/notes.js');
 // Use and include '/users' endpoint before each route
@@ -33,7 +29,7 @@ app.use('/notes', userRouter);
 
 // Return the main HTML page in the root endpoint
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/welcome.html'));
+  res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.listen(PORT, () => {
