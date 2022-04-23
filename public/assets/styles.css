@@ -120,8 +120,7 @@ main {
   position: relative;
 }
 
-#note-title,
-#note-body {
+.note-input {
   background-color: transparent;
   border: none;
   outline: none;
@@ -129,11 +128,11 @@ main {
   position: absolute;
 }
 
-#note-title {
+.note-input:nth-child(1) {
   font-size: 30px;
 }
 
-#note-body {
+.note-input:nth-child(2) {
   font-size: 15px;
   top: 40px;
 }
