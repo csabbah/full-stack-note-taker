@@ -6,8 +6,25 @@ const bodyInput = document.getElementById('note-body');
 const titleInput = document.getElementById('note-title');
 
 // Declare the form array
+var formData = {};
 
-const formData = [];
+// Extract the data from the API and populate our local array with it
+var getNotes = async () => {
+  // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we include the endpoint
+  var url = '/api/notes';
+  // WHEREAS, WHEN WE LAUNCH OUR APP, REFER TO THE PUBLIC URL
+  // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
+
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json; charset=utf-8',
+    },
+  });
+  var notes = await res.json();
+  formData = notes; // Populate our local array with the current API data
+};
+getNotes();
 
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
@@ -43,9 +60,11 @@ formInput.forEach((item) => {
 // When the user clicks on the save button, extract the current values and submit the form
 saveBtn.addEventListener('click', () => {
   // This returns the values from the current input
-  formData.push({ title: titleInput.value, body: bodyInput.value });
-
-  document.querySelector('form').submit();
+  formData.push({
+    note4: { title: titleInput.value, body: bodyInput.value },
+  });
+  console.log(formData);
+  // document.querySelector('form').submit();
 });
 
 // FIND A WAY TO ACCESS FORM DATA IN THE SERVER SO WE CAN POST THE DATA TO THE API

@@ -1,5 +1,5 @@
-{
-  "note1": "This is a note",
-  "note2": "This is note 2",
-  "note3": "This is note 3"
-}
+[
+  { "note1": { "Title": "This is a note", "Body": "This is the body" } },
+  { "note2": { "Title": "This is note 2", "Body": "This is body 2" } },
+  { "note3": { "Title": "This is note 3", "Body": "This is body 3" } }
+]

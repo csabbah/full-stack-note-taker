@@ -5,7 +5,7 @@ const express = require('express');
 const fs = require('fs');
 
 // Declare the port
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3000;
 
 // Declare the server object
 const app = express();
@@ -39,10 +39,6 @@ const noteDb = require('./data/db.json');
 app.get('/api/notes', (req, res) => {
   res.json(noteDb);
 });
-
-// app.post('/api/notes', (req, res) => {
-//   res.json(noteDb);
-// });
 
 // Require our user routes and include all the methods so we can navigate through our app
 const userRouter = require('./routes/notes.js');
