@@ -45,6 +45,7 @@ main {
 }
 
 .save {
+  cursor: pointer;
   display: flex;
   width: 20px;
   filter: invert(100);
@@ -53,6 +54,17 @@ main {
 
 .save.inactive {
   display: none;
+}
+
+.save:hover,
+.add:hover {
+  transform: scale(1.2);
+}
+
+.save:active,
+.add:active {
+  transform: scale(1);
+  transform: scale(1);
 }
 
 #header-right {
