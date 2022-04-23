@@ -4,10 +4,65 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/index.css" />
     <title>Document</title>
   </head>
   <body>
-    Welcome!
-    <a href="/notes">Visit me</a>
+    <main>
+      <section id="intro-container">
+        <h1>Note Taker</h1>
+        <a href="/notes">View notes</a>
+      </section>
+      <!-- main-container in index.html is just for stylizing purposes -->
+      <section id="main-container">
+        <div id="main-header">
+          <p>Note Taker</p>
+          <div id="header-right">
+            <img class="save inactive" src="./assets/images/save.webp" alt="" />
+            <button>+</button>
+          </div>
+        </div>
+        <div id="main-body">
+          <div id="note-list">
+            <!-- Notes get added here -->
+            <div class="note note-1">
+              <p>Call bank</p>
+              <img
+                class="trash trash-1"
+                src="./assets/images/trash.png"
+                alt=""
+              />
+            </div>
+            <div class="note note-2">
+              <p>Finish Payroll</p>
+              <img
+                class="trash trash-2"
+                src="./assets/images/trash.png"
+                alt=""
+              />
+            </div>
+            <div class="note note-3">
+              <p>Go shopping</p>
+              <img
+                class="trash trash-2"
+                src="./assets/images/trash.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div id="note-editor">
+            <form
+              id="note-form"
+              action="/notes/preview"
+              method="POST"
+              value="test"
+            >
+              <input id="note-title" type="text" placeholder="Note title" />
+              <input id="note-body" type="text" placeholder="Note body" />
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

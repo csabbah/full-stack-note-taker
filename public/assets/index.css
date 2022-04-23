@@ -1,6 +1,7 @@
-/* This CSS is for the main application */
+/* This CSS is for the landing page*/
 
 /* -------------------- Root */
+
 * {
   padding: 0;
   margin: 0;
@@ -8,21 +9,51 @@
 }
 
 main {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* -------------------- Landing page */
+#intro-container {
+  position: relative;
+  width: 70%;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+#intro-container h1 {
+  color: black;
+  font-size: 50px;
+}
+
+#intro-container a {
+  margin-top: 5px;
+  font-size: 25px;
+  color: black;
+  border-bottom: 2px solid black;
+  text-decoration: none;
 }
 
 /* -------------------- Main container */
 
 #main-container {
-  width: 70%;
+  filter: blur(7px);
+  pointer-events: none;
+  width: 69.5%;
+  position: absolute;
+  z-index: 1;
 }
 
 /* -------------------- Main header */
 #main-header {
+  width: 100%;
   height: 40px;
   padding: 10px 10px;
   background-color: rgb(73, 207, 162);
@@ -63,26 +94,15 @@ main {
 /* -------------------- Main body */
 
 #main-body {
-  border: 1px solid rgb(185, 185, 185);
+  width: 100%;
+  border: 0.1px solid rgb(185, 185, 185);
   height: 400px;
   display: flex;
 }
 /* ------- Note list */
 #note-list {
   overflow-y: scroll;
-  border-right: 1px solid rgb(185, 185, 185);
-  width: 30%;
-}
-
-#note-list a:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* ------- Note list CSS (This is for the endpoint '/notes') */
-#note-preview-list {
-  overflow-y: scroll;
-  border-right: 1px solid rgb(185, 185, 185);
+  border-right: 0.1px solid rgb(185, 185, 185);
   width: 30%;
 }
 
@@ -95,17 +115,7 @@ main {
 }
 
 .note img {
-  position: relative;
-  width: 16px;
-  z-index: 1;
-}
-
-.note img:hover {
-  transform: scale(1.2);
-}
-
-.note img:active {
-  transform: scale(1);
+  width: 15px;
 }
 
 .trash {
@@ -136,32 +146,4 @@ main {
 #note-body {
   font-size: 15px;
   top: 40px;
-}
-
-/* ------- Note preview CSS (This is for the endpoint '/notes') */
-#note-preview {
-  font-family: inherit;
-  margin-top: 10px;
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-#note-preview h1 {
-  box-sizing: border-box;
-  font-size: 30px;
-}
-
-#note-preview h2 {
-  box-sizing: border-box;
-
-  font-size: 15px;
-}
-
-#note-preview-title,
-#note-preview-body {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  margin: 3px 0;
 }
