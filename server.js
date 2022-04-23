@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 
 // Declare the port
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // Declare the server object
 const app = express();
@@ -10,7 +10,7 @@ const app = express();
 // These allow us to parse/fetch JSON data and serves our static files in our public folder
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('./public'));
 
 // Import path module to response with HTML
 const path = require('path');
@@ -29,7 +29,7 @@ app.use('/notes', userRouter);
 
 // Return the main HTML page in the root endpoint
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
+  res.sendFile(path.join(__dirname, './index.html'));
 });
 
 app.listen(PORT, () => {
