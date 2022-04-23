@@ -26,6 +26,27 @@ var getNotes = async () => {
 };
 getNotes();
 
+var postNotes = async (formData) => {
+  fetch('/api/notes/post', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      alert('Error: ' + response.statusText);
+    })
+    .then((postResponse) => {
+      console.log(postResponse);
+      alert('Thank you for adding your note!');
+    });
+};
+
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
 var validData = [false, false];
@@ -59,11 +80,14 @@ formInput.forEach((item) => {
 
 // When the user clicks on the save button, extract the current values and submit the form
 saveBtn.addEventListener('click', () => {
-  // This returns the values from the current input
+  // This pushes the values from the current input to the local object we created in this session
+  // The local object will contain the current API data
   formData.push({
     note4: { title: titleInput.value, body: bodyInput.value },
   });
+  // *** ADD CODE *** to POST the submitted data to the API DATA
   console.log(formData);
+  // postNotes(formData);
   // document.querySelector('form').submit();
 });
 
