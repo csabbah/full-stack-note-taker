@@ -1,4 +1,6 @@
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
+const { notStrictEqual } = require('assert');
+const { application } = require('express');
 const express = require('express');
 const fs = require('fs');
 
@@ -37,6 +39,10 @@ const noteDb = require('./data/db.json');
 app.get('/api/notes', (req, res) => {
   res.json(noteDb);
 });
+
+// app.post('/api/notes', (req, res) => {
+//   res.json(noteDb);
+// });
 
 // Require our user routes and include all the methods so we can navigate through our app
 const userRouter = require('./routes/notes.js');

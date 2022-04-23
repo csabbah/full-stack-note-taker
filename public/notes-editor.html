@@ -46,20 +46,17 @@
             </a>
           </div>
           <div id="note-editor">
-            <form
-              id="note-form"
-              action="/notes/preview"
-              method="POST"
-              value="test"
-            >
+            <form id="note-form" action="/api/notes" method="POST" value="test">
               <input
                 class="note-input"
+                id="note-title"
                 data-input="title"
                 type="text"
                 placeholder="Note title"
               />
               <input
                 class="note-input"
+                id="note-body"
                 data-input="body"
                 type="text"
                 placeholder="Note body"
