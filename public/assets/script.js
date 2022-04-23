@@ -27,7 +27,7 @@ var getNotes = async () => {
 getNotes();
 
 var postNotes = async (formData) => {
-  fetch('/api/notes/post', {
+  fetch('/api/notes', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -87,8 +87,7 @@ saveBtn.addEventListener('click', () => {
   });
   // *** ADD CODE *** to POST the submitted data to the API DATA
   console.log(formData);
-  // postNotes(formData);
-  // document.querySelector('form').submit();
+  document.querySelector('form').submit();
 });
 
 // FIND A WAY TO ACCESS FORM DATA IN THE SERVER SO WE CAN POST THE DATA TO THE API

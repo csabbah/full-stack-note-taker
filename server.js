@@ -39,9 +39,10 @@ app.get('/api/notes', (req, res) => {
   res.json(noteDb);
 });
 
-app.post('/api/notes/post', (req, res) => {
-  console.log(req);
-  res.send('hi');
+// This route will post the new data
+app.post('/api/post', (req, res) => {
+  // Send the notes-preview html after upload
+  res.send('Data has been uploaded');
 });
 
 // Require our user routes and include all the methods so we can navigate through our app
