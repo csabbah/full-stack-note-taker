@@ -23,6 +23,7 @@ var getNotes = async () => {
 
 getNotes();
 
+// The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
 var noteContainer = document.getElementById('note-preview-list');
 function generateNoteEl(notes) {
   var noteEl = document.createElement('a');

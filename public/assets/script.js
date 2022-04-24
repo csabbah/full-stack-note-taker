@@ -59,8 +59,25 @@ var getNotes = async () => {
     },
   });
   var notes = await res.json();
-  formData = notes; // Populate our local array with the current API data
-  console.log(formData);
+  notes.forEach((note) => {
+    generateNoteEl(note);
+  });
 };
 
 getNotes();
+
+// The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
+var noteContainer = document.getElementById('note-list');
+function generateNoteEl(notes) {
+  var noteEl = document.createElement('a');
+  noteEl.classList.add(`note`, `note-${notes.id}`);
+  noteEl.innerHTML = `
+  <p>${notes.Title}</p>
+  <img
+  class="trash trash-1"
+  src="./assets/images/trash.png"
+  alt=""
+  />
+  `;
+  noteContainer.appendChild(noteEl);
+}
