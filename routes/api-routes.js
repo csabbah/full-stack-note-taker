@@ -25,7 +25,9 @@ router.post('/post', (req, res) => {
   var newData = {
     // req.body == the FORM that initialized the post method and endpoint
     // while the .titleData and .bodyData == the 'NAME' parameters in the form inputs
-    note1: { Title: req.body.titleData, Body: req.body.bodyData },
+    Title: req.body.titleData,
+    Body: req.body.bodyData,
+    id: noteDb.length + 1,
   };
   // Push the newData to the noteDb and writeFile (push)
   addNote(noteDb, newData);

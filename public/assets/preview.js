@@ -1,8 +1,7 @@
 // This script is for extracting active database and populating HTML with said data
 // Used in the public/notes-preview.html file
 
-// Declare an empty object
-var formData = {};
+var noteContainer = document.getElementById('note-preview-list');
 
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
@@ -18,8 +17,15 @@ var getNotes = async () => {
     },
   });
   var notes = await res.json();
-  formData = notes; // Populate our local array with the current API data
-  console.log(formData);
+  console.log(notes);
 };
 
 getNotes();
+
+// function generateNoteEl(notes) {}
+
+// var btn = document.createElement('button');
+// btn.classList.add('search-btn');
+// btn.textContent = item.searchTerm;
+// btn.type = 'button';
+// historyContainer.appendChild(btn);
