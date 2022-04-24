@@ -1,5 +1,5 @@
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
-
+const { returnData, addNote } = require('./lib/notes');
 const express = require('express');
 const fs = require('fs');
 
@@ -17,33 +17,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('./public'));
 
-// ------- ------- ------- ------- ------- ------- ------- ------- WORKING WITH JSON DATA
-
-// Parse the JSON data from the database file to be viewed/used in our app (behind the screen)
-fs.readFile('./data/db.json', 'utf8', (err, jsonString) => {
-  if (err) {
-    // If it doesn't exist, return error
-    console.log('File read failed:', err);
-    return;
-  }
-  // Else, return the file and all it's data
-  console.log('File data:', jsonString);
-});
-
-// ------- ------- ------- ------- ------- ------- ------- ------- HANDLING REQUESTS
-
 // Import the JSON data
 const noteDb = require('./data/db.json');
+
+// ------- ------- ------- ------- ------- ------- ------- ------- API REQUESTS
 // Return a response to show the data by visiting the /api/notes endpoint
 app.get('/api/notes', (req, res) => {
   res.json(noteDb);
 });
 
-// This route will post the new data
+// Mock data - this newData object will successfully push to the data base
+var newData = { note1: { Title: 'Osama', Body: 'Body' } };
 app.post('/api/post', (req, res) => {
-  // Send the notes-preview html after upload
-  res.send('Data has been uploaded');
+  // Push the newData to the noteDb and writeFile (push)
+  addNote(noteDb, newData);
+  // Return the JSON data via webpage
+  res.json(noteDb);
 });
+
+// ------- ------- ------- ------- ------- ------- ------- ------- NOTE REQUESTS
 
 // Require our user routes and include all the methods so we can navigate through our app
 const userRouter = require('./routes/notes.js');

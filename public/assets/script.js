@@ -26,25 +26,9 @@ var getNotes = async () => {
 };
 getNotes();
 
+// Execute the fetch function for post method (REFER TO THE UOFT PROJECT EXAMPLE)
 var postNotes = async (formData) => {
-  fetch('/api/notes', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      alert('Error: ' + response.statusText);
-    })
-    .then((postResponse) => {
-      console.log(postResponse);
-      alert('Thank you for adding your note!');
-    });
+  // fetch('/api/notes');
 };
 
 // This will listen for keyup event listeners on the inputs
@@ -85,9 +69,6 @@ saveBtn.addEventListener('click', () => {
   formData.push({
     note4: { title: titleInput.value, body: bodyInput.value },
   });
-  // *** ADD CODE *** to POST the submitted data to the API DATA
-  console.log(formData);
+  // console.log(formData);
   document.querySelector('form').submit();
 });
-
-// FIND A WAY TO ACCESS FORM DATA IN THE SERVER SO WE CAN POST THE DATA TO THE API
