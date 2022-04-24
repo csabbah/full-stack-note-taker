@@ -1,3 +1,5 @@
+// This file executes all requests and responses via routers and root requests
+
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
 const express = require('express');
 
@@ -10,27 +12,25 @@ const app = express();
 // Import path module to response with HTML
 const path = require('path');
 
-// Import bodyParser to extract form data
-const bodyParser = require('body-parser');
 // These allow us to parse/fetch JSON data and serves our static files in our public folder
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('./public'));
 
-// ------- ------- ------- ------- ------- ------- ------- ------- API REQUESTS
+// ------- ------- ------- ------- ------- ------- ------- ------- API ROUTES
 // Require our api routes and include all the methods
 const apiRouter = require('./routes/api-routes.js');
 // Use and include '/api' endpoint before each api route
 app.use('/api', apiRouter);
 
-// ------- ------- ------- ------- ------- ------- ------- ------- NOTE REQUESTS
+// ------- ------- ------- ------- ------- ------- ------- ------- NOTE ROUTES
 
 // Require our user routes and include all the methods so we can navigate through our app
 const noteRouter = require('./routes/notes-routes.js');
 // Use and include '/users' endpoint before each notes route
 app.use('/notes', noteRouter);
 
-// ------- ------- ------- ------- ------- ------- ------- ------- ROOT ENDPOINT REQUEST
+// ------- ------- ------- ------- ------- ------- ------- ------- ROOT ENDPOINT
 
 // Return the main HTML page in the root endpoint
 app.get('*', (req, res) => {

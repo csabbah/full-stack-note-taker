@@ -1,30 +1,13 @@
-// Declare the Elements for the event listeners
+// This script is for handling form submission and validation (for the notes-editor.html file)
+// Additionally, this script will also extract current data and populate the HTML data
+// Used in the public/notes-editor.html file
+
+// ------- ------- ------- ------- ------- ------- ------- ------- DECLARING OBJECTS FOR EVENT LISTENERS
 const saveBtn = document.querySelector('.save');
 const formInput = document.querySelectorAll('.note-input');
 
 const bodyInput = document.getElementById('note-body');
 const titleInput = document.getElementById('note-title');
-
-// Declare the form array
-var formData = {};
-
-// Extract the data from the API and populate our local array with it
-var getNotes = async () => {
-  // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we include the endpoint
-  var url = '/api/notes';
-  // WHEREAS, WHEN WE LAUNCH OUR APP, REFER TO THE PUBLIC URL
-  // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
-
-  const res = await fetch(url, {
-    method: 'GET',
-    headers: {
-      accept: 'application/json; charset=utf-8',
-    },
-  });
-  var notes = await res.json();
-  formData = notes; // Populate our local array with the current API data
-};
-getNotes();
 
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
@@ -61,3 +44,23 @@ formInput.forEach((item) => {
 saveBtn.addEventListener('click', () => {
   document.querySelector('form').submit();
 });
+
+// Extract the data from the API and populate our local array with it
+var getNotes = async () => {
+  // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we just include the endpoint
+  var url = '/api/notes';
+  // WHEREAS, WHEN WE LAUNCH OUR APP, REFER TO THE PUBLIC URL
+  // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
+
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json; charset=utf-8',
+    },
+  });
+  var notes = await res.json();
+  formData = notes; // Populate our local array with the current API data
+  console.log(formData);
+};
+
+getNotes();
