@@ -26,11 +26,6 @@ var getNotes = async () => {
 };
 getNotes();
 
-// Execute the fetch function for post method (REFER TO THE UOFT PROJECT EXAMPLE)
-var postNotes = async (formData) => {
-  // fetch('/api/notes');
-};
-
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
 var validData = [false, false];
