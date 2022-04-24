@@ -64,11 +64,5 @@ formInput.forEach((item) => {
 
 // When the user clicks on the save button, extract the current values and submit the form
 saveBtn.addEventListener('click', () => {
-  // This pushes the values from the current input to the local object we created in this session
-  // The local object will contain the current API data
-  formData.push({
-    note4: { title: titleInput.value, body: bodyInput.value },
-  });
-  // console.log(formData);
   document.querySelector('form').submit();
 });

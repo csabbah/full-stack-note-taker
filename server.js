@@ -1,7 +1,6 @@
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
 const { returnData, addNote } = require('./lib/notes');
 const express = require('express');
-const fs = require('fs');
 
 // Declare the port
 const PORT = process.env.PORT || 3000;
@@ -12,6 +11,8 @@ const app = express();
 // Import path module to response with HTML
 const path = require('path');
 
+// Import bodyParser to extract form data
+const bodyParser = require('body-parser');
 // These allow us to parse/fetch JSON data and serves our static files in our public folder
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -26,9 +27,13 @@ app.get('/api/notes', (req, res) => {
   res.json(noteDb);
 });
 
-// Mock data - this newData object will successfully push to the data base
-var newData = { note1: { Title: 'Osama', Body: 'Body' } };
+// Handle post method - Upload notes to DB
 app.post('/api/post', (req, res) => {
+  var newData = {
+    // req.body == the FORM that initialized the post method and endpoint
+    // while the .titleData and .bodyData == the 'NAME' parameters in the form inputs
+    note1: { Title: req.body.titleData, Body: req.body.bodyData },
+  };
   // Push the newData to the noteDb and writeFile (push)
   addNote(noteDb, newData);
   // Return the JSON data via webpage
