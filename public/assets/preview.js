@@ -1,8 +1,6 @@
 // This script is for extracting active database and populating HTML with said data
 // Used in the public/notes-preview.html file
 
-var noteContainer = document.getElementById('note-preview-list');
-
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
   // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we include the endpoint
@@ -17,15 +15,25 @@ var getNotes = async () => {
     },
   });
   var notes = await res.json();
-  console.log(notes);
+
+  notes.forEach((note) => {
+    generateNoteEl(note);
+  });
 };
 
 getNotes();
 
-// function generateNoteEl(notes) {}
-
-// var btn = document.createElement('button');
-// btn.classList.add('search-btn');
-// btn.textContent = item.searchTerm;
-// btn.type = 'button';
-// historyContainer.appendChild(btn);
+var noteContainer = document.getElementById('note-preview-list');
+function generateNoteEl(notes) {
+  var noteEl = document.createElement('a');
+  noteEl.classList.add(`note`, `note-${notes.id}`);
+  noteEl.innerHTML = `
+  <p>${notes.Title}</p>
+  <img
+  class="trash trash-1"
+  src="./assets/images/trash.png"
+  alt=""
+  />
+  `;
+  noteContainer.appendChild(noteEl);
+}
