@@ -1,5 +1,4 @@
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
-const { returnData, addNote } = require('./lib/notes');
 const express = require('express');
 
 // Declare the port
@@ -18,34 +17,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('./public'));
 
-// Import the JSON data
-const noteDb = require('./data/db.json');
-
 // ------- ------- ------- ------- ------- ------- ------- ------- API REQUESTS
-// Return a response to show the data by visiting the /api/notes endpoint
-app.get('/api/notes', (req, res) => {
-  res.json(noteDb);
-});
-
-// Handle post method - Upload notes to DB
-app.post('/api/post', (req, res) => {
-  var newData = {
-    // req.body == the FORM that initialized the post method and endpoint
-    // while the .titleData and .bodyData == the 'NAME' parameters in the form inputs
-    note1: { Title: req.body.titleData, Body: req.body.bodyData },
-  };
-  // Push the newData to the noteDb and writeFile (push)
-  addNote(noteDb, newData);
-  // Return the JSON data via webpage
-  res.json(noteDb);
-});
+// Require our api routes and include all the methods
+const apiRouter = require('./routes/api-routes.js');
+// Use and include '/api' endpoint before each api route
+app.use('/api', apiRouter);
 
 // ------- ------- ------- ------- ------- ------- ------- ------- NOTE REQUESTS
 
 // Require our user routes and include all the methods so we can navigate through our app
-const userRouter = require('./routes/notes.js');
-// Use and include '/users' endpoint before each route
-app.use('/notes', userRouter);
+const noteRouter = require('./routes/notes-routes.js');
+// Use and include '/users' endpoint before each notes route
+app.use('/notes', noteRouter);
+
+// ------- ------- ------- ------- ------- ------- ------- ------- ROOT ENDPOINT REQUEST
 
 // Return the main HTML page in the root endpoint
 app.get('*', (req, res) => {

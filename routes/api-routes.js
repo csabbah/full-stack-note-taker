@@ -1,0 +1,32 @@
+const { returnData, addNote } = require('../lib/notes');
+const express = require('express');
+const router = express.Router();
+
+const path = require('path');
+
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+router.use(express.static('./public'));
+
+// Import the JSON data
+const noteDb = require('../data/db.json');
+
+// Return a response to show the data by visiting the /api/notes endpoint
+router.get('/notes', (req, res) => {
+  res.json(noteDb);
+});
+
+// Handle post method - Upload notes to DB
+router.post('/post', (req, res) => {
+  var newData = {
+    // req.body == the FORM that initialized the post method and endpoint
+    // while the .titleData and .bodyData == the 'NAME' parameters in the form inputs
+    note1: { Title: req.body.titleData, Body: req.body.bodyData },
+  };
+  // Push the newData to the noteDb and writeFile (push)
+  addNote(noteDb, newData);
+  // Return the JSON data via webpage
+  res.json(noteDb);
+});
+
+module.exports = router;
