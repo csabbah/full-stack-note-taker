@@ -15,10 +15,10 @@ var getNotes = async () => {
     },
   });
   var notes = await res.json();
-
   notes.forEach((note) => {
     generateNoteEl(note);
   });
+  handleNoteEvent(notes);
 };
 
 getNotes();
@@ -43,3 +43,34 @@ var addBtn = document.querySelector('.add');
 addBtn.addEventListener('click', () => {
   window.location.href = '/notes';
 });
+
+// The below function will update the preview title and body in the preview page HTML
+// It will look through the Database and compare with the existing elements in the webpage
+var previewTitleEl = document.getElementById('note-preview-title');
+var previewBodyEl = document.getElementById('note-preview-body');
+
+var handleNoteEvent = (dbArr) => {
+  var previewNotes = document.querySelectorAll('.note');
+  previewNotes.forEach((previewNote) => {
+    previewNote.addEventListener('click', () => {
+      dbArr.forEach((dbNote) => {
+        // If the database id matches with the note id of the existing element...
+        if (dbNote.id == previewNote.classList[1].split('-')[1]) {
+          // Update the actual title and body in the HTML page to display the clicked note
+          previewBodyEl.textContent = dbNote.Body;
+          previewTitleEl.textContent = dbNote.Title;
+          // Check through all elements to see if any has an active class at the same time the user
+          // clicks on a note. If there is an existing active class, remove it so we can add
+          // a new one when clicking on the next note
+          previewNotes.forEach((checkClass) => {
+            if (checkClass.classList.contains('active')) {
+              checkClass.classList.remove('active');
+            }
+          });
+          // Add class of active to the clicked note
+          previewNote.classList.add('active');
+        }
+      });
+    });
+  });
+};

@@ -96,6 +96,10 @@ main {
   text-decoration: none;
 }
 
+.note.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 /* ------- Note list CSS (This is for the endpoint '/notes') */
 #note-preview-list {
   overflow-y: scroll;
@@ -131,8 +135,6 @@ main {
 }
 
 .trash {
-  position: relative;
-  z-index: 2;
   cursor: pointer;
 }
 /* ------- Note body */
