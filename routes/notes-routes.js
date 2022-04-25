@@ -11,8 +11,11 @@ router.use(express.json());
 router.use(express.static('./public'));
 
 // ------- ------- ------- ------- ------- ------- ------- ------- HANDLING NOTE GET REQUESTS
+
 // '/notes/preview' will return the notes-preview HTML which allows users to look through notes
 router.get('/preview', (req, res) => {
+  //  This returns the ID query parameter from the url
+  console.log(req.query.id);
   res.sendFile(path.join(__dirname, '../public/notes-preview.html'));
 });
 

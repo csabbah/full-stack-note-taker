@@ -91,11 +91,21 @@ main {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.note {
+  color: black;
+  text-decoration: none;
+}
+
 /* ------- Note list CSS (This is for the endpoint '/notes') */
 #note-preview-list {
   overflow-y: scroll;
   border-right: 1px solid rgb(185, 185, 185);
   width: 30%;
+}
+
+#note-preview-list a:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .note {

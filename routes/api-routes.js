@@ -21,7 +21,7 @@ router.get('/notes', (req, res) => {
 });
 
 // Handle post method - Upload notes to DB
-router.post('/post', (req, res) => {
+router.post('/notes', (req, res) => {
   var newData = {
     // req.body == the FORM that initialized the post method and endpoint
     // while the .titleData and .bodyData == the 'NAME' parameters in the form inputs

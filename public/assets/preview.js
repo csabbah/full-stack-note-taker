@@ -27,6 +27,8 @@ getNotes();
 var noteContainer = document.getElementById('note-preview-list');
 function generateNoteEl(notes) {
   var noteEl = document.createElement('a');
+  // For the link in the anchor tag, return the ID as the query parameter
+  noteEl.href = `/notes/preview?id=${notes.id}`;
   noteEl.classList.add(`note`, `note-${notes.id}`);
   noteEl.innerHTML = `
   <p>${notes.Title}</p>
