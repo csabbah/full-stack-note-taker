@@ -29,6 +29,7 @@ router.post('/notes', (req, res) => {
     Body: req.body.bodyData,
     id: noteDb.length + 1,
     currentlyPosted: true,
+    currentlySelected: false,
   };
   // Push the newData to the noteDb and writeFile (push)
   addNote(noteDb, newData);

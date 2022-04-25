@@ -3,42 +3,91 @@
     "Title": "This is a note",
     "Body": "This is the body",
     "id": 1,
-    "currentlyPosted": false
+    "currentlyPosted": false,
+    "currentlySelected": false
   },
   {
     "Title": "This is note 2",
     "Body": "This is body 2",
     "id": 2,
-    "currentlyPosted": false
+    "currentlyPosted": false,
+    "currentlySelected": false
   },
   {
     "Title": "This is note 3",
     "Body": "This is body 3",
     "id": 3,
-    "currentlyPosted": false
+    "currentlyPosted": false,
+    "currentlySelected": false
   },
   {
     "Title": "Carls",
-    "Body": "cdsa",
+    "Body": "cdas",
     "id": 4,
-    "currentlyPosted": false
+    "currentlyPosted": false,
+    "currentlySelected": false
   },
   {
-    "Title": "Bob",
-    "Body": "IIs gay",
+    "Title": "Carls",
+    "Body": "cdas",
     "id": 5,
-    "currentlyPosted": false
+    "currentlyPosted": false,
+    "currentlySelected": false
   },
   {
-    "Title": "Bob",
-    "Body": "IIs gay",
+    "Title": "No",
+    "Body": "yes",
     "id": 6,
-    "currentlyPosted": false
+    "currentlyPosted": false,
+    "currentlySelected": true
   },
   {
-    "Title": "Is he though",
-    "Body": "fgsad",
+    "Title": "bob",
+    "Body": "cdsa",
     "id": 7,
-    "currentlyPosted": true
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "bob",
+    "Body": "cdsa",
+    "id": 8,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "Margo",
+    "Body": "Is dumb",
+    "id": 9,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "cdsacsd",
+    "Body": "cdsacds",
+    "id": 10,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "cccccccc",
+    "Body": "ccccccc",
+    "id": 11,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "dacasd",
+    "Body": "cdsacds",
+    "id": 12,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "oooo",
+    "Body": "oooooo",
+    "id": 13,
+    "currentlyPosted": false,
+    "currentlySelected": false
   }
 ]

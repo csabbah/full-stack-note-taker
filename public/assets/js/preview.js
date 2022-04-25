@@ -23,11 +23,12 @@ var getNotes = async () => {
     if (note.currentlyPosted) {
       selectNewestNote(note);
     }
+    if (note.currentlySelected) {
+      selectNote(note);
+    }
+    handleNoteEvent(notes);
   });
-  handleNoteEvent(notes);
 };
-
-getNotes();
 
 // The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
 var noteContainer = document.getElementById('note-preview-list');
@@ -68,11 +69,7 @@ var handleNoteEvent = (dbArr) => {
           // Check through all elements to see if any has an active class at the same time the user
           // clicks on a note. If there is an existing active class, remove it so we can add
           // a new one when clicking on the next note
-          previewNotes.forEach((checkClass) => {
-            if (checkClass.classList.contains('active')) {
-              checkClass.classList.remove('active');
-            }
-          });
+          resetActive(previewNotes);
           // Add class of active to the clicked note
           previewNote.classList.add('active');
         }
@@ -81,10 +78,28 @@ var handleNoteEvent = (dbArr) => {
   });
 };
 
+var resetActive = (htmlNodeList) => {
+  htmlNodeList.forEach((checkClass) => {
+    if (checkClass.classList.contains('active')) {
+      checkClass.classList.remove('active');
+    }
+  });
+};
+// This auto selects the newest note that was created
 var selectNewestNote = (note) => {
   var previewNotes = document.querySelectorAll('.note');
-
+  resetActive(previewNotes);
   previewBodyEl.textContent = note.Body;
   previewTitleEl.textContent = note.Title;
   previewNotes[previewNotes.length - 1].classList.add('active');
 };
+
+// This auto selects the selected note
+var selectNote = (note) => {
+  var previewNotes = document.querySelectorAll('.note');
+  previewBodyEl.textContent = note.Body;
+  previewTitleEl.textContent = note.Title;
+  previewNotes[note.id - 1].classList.add('active');
+};
+
+getNotes();

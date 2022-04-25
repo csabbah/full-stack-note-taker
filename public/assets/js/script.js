@@ -64,15 +64,13 @@ var getNotes = async () => {
   });
 };
 
-getNotes();
-
 // The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
 var noteContainer = document.getElementById('note-list');
 function generateNoteEl(notes) {
   var noteEl = document.createElement('a');
   // For the link in the anchor tag, return the ID as the query parameter
   // noteEl.href = `/notes/preview?id=${notes.id}`;
-  noteEl.href = `/notes/preview`;
+  noteEl.href = `/notes/${notes.id}`;
   noteEl.classList.add(`note`, `note-${notes.id}`);
   noteEl.innerHTML = `
   <p>${notes.Title}</p>
@@ -85,3 +83,5 @@ function generateNoteEl(notes) {
 
   noteContainer.appendChild(noteEl);
 }
+
+getNotes();
