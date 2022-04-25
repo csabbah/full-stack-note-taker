@@ -32,7 +32,7 @@ router.post('/notes', (req, res) => {
   // Push the newData to the noteDb and writeFile (push)
   addNote(noteDb, newData);
   // Send the preview.html webpage as the response
-  res.sendFile(path.join(__dirname, '../public/notes-preview.html'));
+  res.sendFile(path.join(__dirname, '../public/views/notes-preview.html'));
 });
 
 module.exports = router;
