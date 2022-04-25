@@ -1,7 +1,7 @@
 // This script is for extracting active database and populating HTML with said data
 // Used in the public/notes-preview.html file
 
-// Extract the data from the API and populate our local array with it
+// Extract the data from the API database
 var getNotes = async () => {
   // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we include the endpoint
   var url = '/api/notes';
@@ -15,8 +15,14 @@ var getNotes = async () => {
     },
   });
   var notes = await res.json();
+
+  // For each note, generate the elements
   notes.forEach((note) => {
     generateNoteEl(note);
+    // When we visit this preview page, if the note was previously added, auto select it
+    if (note.currentlyPosted) {
+      selectNewestNote(note);
+    }
   });
   handleNoteEvent(notes);
 };
@@ -73,4 +79,12 @@ var handleNoteEvent = (dbArr) => {
       });
     });
   });
+};
+
+var selectNewestNote = (note) => {
+  var previewNotes = document.querySelectorAll('.note');
+
+  previewBodyEl.textContent = note.Body;
+  previewTitleEl.textContent = note.Title;
+  previewNotes[previewNotes.length - 1].classList.add('active');
 };
