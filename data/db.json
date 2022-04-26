@@ -4,7 +4,7 @@
     "Body": "This is the body",
     "id": 1,
     "currentlyPosted": false,
-    "currentlySelected": true
+    "currentlySelected": false
   },
   {
     "Title": "This is note 2",
@@ -25,6 +25,41 @@
     "Body": "Sabbbbb",
     "id": 4,
     "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "Bob",
+    "Body": "Is cool",
+    "id": 5,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "CSAD",
+    "Body": "csaassa",
+    "id": 6,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "CSAD",
+    "Body": "csaassa",
+    "id": 7,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "Take dog out",
+    "Body": "For lunch",
+    "id": 8,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "Take dog out",
+    "Body": "For lunch",
+    "id": 9,
+    "currentlyPosted": true,
     "currentlySelected": false
   }
 ]

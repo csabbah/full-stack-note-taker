@@ -17,20 +17,33 @@ var getNotes = async () => {
       accept: 'application/json; charset=utf-8',
     },
   });
-  var notes = await res.json();
 
-  // For each note, generate the elements
-  notes.forEach((note) => {
-    generateNoteEl(note);
-    // When we visit this preview page, if the note was previously added, auto select it
-    if (note.currentlyPosted) {
-      selectNewestNote(note);
+  try {
+    // If the response is 400...
+    if (res.status >= 400) {
+      // That means no proper data was returned
+      Alert('Error 400: No data returned');
+    } else {
+      var notes = await res.json();
+
+      // For each note, generate the elements
+      notes.forEach((note) => {
+        generateNoteEl(note);
+        // When we visit this preview page, if the note was previously added, auto select it
+        if (note.currentlyPosted) {
+          selectNewestNote(note);
+        }
+        if (note.currentlySelected) {
+          selectNote(note);
+        }
+        handleNoteEvent(notes);
+      });
     }
-    if (note.currentlySelected) {
-      selectNote(note);
-    }
-    handleNoteEvent(notes);
-  });
+
+    // If there is no network connection, execute the catch block function
+  } catch (error) {
+    alert('No network found!');
+  }
 };
 
 // The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
@@ -62,7 +75,22 @@ var previewBodyEl = document.getElementById('note-preview-body');
 var handleNoteEvent = (dbArr) => {
   var previewNotes = document.querySelectorAll('.note');
   previewNotes.forEach((previewNote) => {
+    // Initially if a note has an active class (meaning it's currently displayed), remove href so we don't re-fetch
+    // Additionally, set cursor to default
+    if (previewNote.classList.contains('active')) {
+      previewNote.style.cursor = 'default';
+      previewNote.style.pointerEvents = 'none';
+    }
     previewNote.addEventListener('click', () => {
+      previewNotes.forEach((previewNote) => {
+        if (previewNote.classList.contains('active')) {
+          previewNote.style.cursor = 'default';
+          previewNote.style.pointerEvents = 'none';
+        } else {
+          previewNote.style.cursor = 'pointer';
+          previewNote.style.pointerEvents = 'all';
+        }
+      });
       dbArr.forEach((dbNote) => {
         // If the database id matches with the note id of the existing element...
         if (dbNote.id == previewNote.classList[1].split('-')[1]) {

@@ -17,14 +17,6 @@ const noteDb = require('../data/db.json');
 
 // ------- ------- ------- ------- ------- ------- ------- ------- HANDLING NOTE GET REQUESTS
 
-// '/notes/preview' will return the notes-preview HTML which allows users to look through notes
-router.get('/preview', (req, res) => {
-  //  This returns the ID query parameter from the url
-  // console.log(req.params);
-
-  res.sendFile(path.join(__dirname, '../public/views/notes-preview.html'));
-});
-
 // '/notes/<id-number>' will return the notes-preview HTML which allows users to look through notes
 router.get('/:id', function (req, res) {
   // Use the id of the note (in the url) to auto select the note with matching id from the database
