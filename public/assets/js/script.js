@@ -1,6 +1,7 @@
-// This script is for handling form submission and validation (for the notes-editor.html file)
-// Additionally, this script will also extract current data and populate the HTML data
-// Used in the public/notes-editor.html file
+// This script handles the following:
+// Form submission and validation
+// Fetches for the data from the database and generates the elements accordingly
+// Script is used in the public/notes-editor.html file
 
 // ------- ------- ------- ------- ------- ------- ------- ------- DECLARING OBJECTS FOR EVENT LISTENERS
 const saveBtn = document.querySelector('.save');

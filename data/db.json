@@ -4,7 +4,7 @@
     "Body": "This is the body",
     "id": 1,
     "currentlyPosted": false,
-    "currentlySelected": false
+    "currentlySelected": true
   },
   {
     "Title": "This is note 2",
@@ -17,6 +17,13 @@
     "Title": "This is note 3",
     "Body": "This is body 3",
     "id": 3,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "Carls",
+    "Body": "Sabbbbb",
+    "id": 4,
     "currentlyPosted": false,
     "currentlySelected": false
   }

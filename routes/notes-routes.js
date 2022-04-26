@@ -1,7 +1,7 @@
 // This file handles all NOTE related requests, in this case, returning the appropriate HTML webpages
 
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
-const { removeRecent, autoSelect } = require('../lib/notes');
+const { removeRecent, autoSelect, resetAllBooleans } = require('../lib/notes');
 
 const express = require('express');
 const router = express.Router();
@@ -22,8 +22,6 @@ router.get('/preview', (req, res) => {
   //  This returns the ID query parameter from the url
   // console.log(req.params);
 
-  // Set all 'recentlyPosted' booleans in the database to false so it doesn't auto click on any of them when previewing notes
-  removeRecent(noteDb);
   res.sendFile(path.join(__dirname, '../public/views/notes-preview.html'));
 });
 
@@ -38,6 +36,8 @@ router.get('/:id', function (req, res) {
 
 // '/notes' will return main note editor HTML which allows users to post new notes
 router.get('/', (req, res) => {
+  // Reset all booleans when you visit the editor page
+  resetAllBooleans(noteDb);
   res.sendFile(path.join(__dirname, '../public/views/notes-editor.html'));
 });
 

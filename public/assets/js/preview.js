@@ -1,5 +1,8 @@
-// This script is for extracting active database and populating HTML with said data
-// Used in the public/notes-preview.html file
+// This script handles the following:
+// Extract the data base and populates the HTML with data
+// Will handle the main function of being able to view the data based on the note you click
+// Additionally behind the screen, it will track what we click and what we note we post so we can auto select this note from here
+// Script is used in the public/notes-preview.html file
 
 // Extract the data from the API database
 var getNotes = async () => {
