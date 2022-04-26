@@ -1,7 +1,7 @@
 // This file handles all API related requests, including, posting notes and returning data from the database
 
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
-const { returnData, addNote } = require('../lib/notes');
+const { addNote } = require('../lib/notes');
 const express = require('express');
 const router = express.Router();
 
@@ -32,9 +32,13 @@ router.post('/notes', (req, res) => {
     currentlySelected: false,
   };
   // Push the newData to the noteDb and writeFile (push)
-  addNote(noteDb, newData);
+  addNote(noteDb, newData, res);
   // Send the preview.html webpage as the response
-  res.sendFile(path.join(__dirname, '../public/views/notes-preview.html'));
+  res.redirect(`/notes/${newData.id}`);
 });
+
+// router.delete('/notes/:id', (req, res) => {
+//   res.send('DELETE Request Called');
+// });
 
 module.exports = router;

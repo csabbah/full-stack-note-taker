@@ -1,7 +1,7 @@
 [
   {
-    "Title": "This is a note",
-    "Body": "This is the body",
+    "Title": "note1",
+    "Body": "body1",
     "id": 1,
     "currentlyPosted": false,
     "currentlySelected": false
@@ -22,44 +22,58 @@
   },
   {
     "Title": "Carls",
-    "Body": "Sabbbbb",
+    "Body": "body1",
     "id": 4,
     "currentlyPosted": false,
     "currentlySelected": false
   },
   {
-    "Title": "Bob",
-    "Body": "Is cool",
+    "Title": "bob",
+    "Body": "cdas",
     "id": 5,
     "currentlyPosted": false,
     "currentlySelected": false
   },
   {
-    "Title": "CSAD",
-    "Body": "csaassa",
+    "Title": "Carls",
+    "Body": "Sabbbbb",
     "id": 6,
     "currentlyPosted": false,
     "currentlySelected": false
   },
   {
-    "Title": "CSAD",
-    "Body": "csaassa",
+    "Title": "bob",
+    "Body": "cdasf",
     "id": 7,
     "currentlyPosted": false,
     "currentlySelected": false
   },
   {
-    "Title": "Take dog out",
-    "Body": "For lunch",
+    "Title": "Carlos is the bset",
+    "Body": "vadsgfds",
     "id": 8,
     "currentlyPosted": false,
     "currentlySelected": false
   },
   {
-    "Title": "Take dog out",
-    "Body": "For lunch",
+    "Title": "joeana",
+    "Body": "fadsff",
     "id": 9,
-    "currentlyPosted": true,
+    "currentlyPosted": false,
     "currentlySelected": false
+  },
+  {
+    "Title": "oyoooooo",
+    "Body": "geeneneeee",
+    "id": 10,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "adsffdadf",
+    "Body": "fdaboubdsfs",
+    "id": 11,
+    "currentlyPosted": false,
+    "currentlySelected": true
   }
 ]

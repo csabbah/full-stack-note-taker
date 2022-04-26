@@ -37,6 +37,7 @@ var getNotes = async () => {
           selectNote(note);
         }
         handleNoteEvent(notes);
+        deleteEvent();
       });
     }
 
@@ -53,19 +54,17 @@ function generateNoteEl(notes) {
   noteEl.classList.add(`note`, `note-${notes.id}`);
   noteEl.innerHTML = `
   <p>${notes.Title}</p>
+  <a href="#">
+    <input type="hidden" name="_method" value="PUT"/>
   <img
   class="trash trash-1"
   src="./assets/images/trash.png"
   alt="Trash Icon"
   />
+  </a>
   `;
   noteContainer.appendChild(noteEl);
 }
-
-var addBtn = document.querySelector('.add');
-addBtn.addEventListener('click', () => {
-  window.location.href = '/notes';
-});
 
 // The below function will update the preview title and body in the preview page HTML
 // It will look through the Database and compare with the existing elements in the webpage
@@ -109,6 +108,7 @@ var handleNoteEvent = (dbArr) => {
   });
 };
 
+// Removes all active classes from the notes
 var resetActive = (htmlNodeList) => {
   htmlNodeList.forEach((checkClass) => {
     if (checkClass.classList.contains('active')) {
@@ -132,5 +132,19 @@ var selectNote = (note) => {
   previewTitleEl.textContent = note.Title;
   previewNotes[note.id - 1].classList.add('active');
 };
+
+var addBtn = document.querySelector('.add');
+addBtn.addEventListener('click', () => {
+  window.location.href = '/notes';
+});
+
+function deleteEvent() {
+  // var trashForm = document.querySelectorAll('.delete-form');
+  // trashForm.forEach((button) => {
+  //   button.addEventListener('click', () => {
+  //     document.querySelector('form').submit();
+  //   });
+  // });
+}
 
 getNotes();

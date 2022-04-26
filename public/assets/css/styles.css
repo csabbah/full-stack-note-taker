@@ -142,6 +142,9 @@ main {
 }
 
 .trash {
+  position: relative;
+  pointer-events: all;
+  z-index: 3;
   cursor: pointer;
 }
 /* ------- Note body */

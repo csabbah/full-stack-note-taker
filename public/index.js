@@ -1,5 +1,4 @@
 // This file ensures that the accurate number of notes are shown even in the blurred intro screen
-
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
   // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we just include the endpoint
@@ -13,10 +12,25 @@ var getNotes = async () => {
       accept: 'application/json; charset=utf-8',
     },
   });
-  var notes = await res.json();
-  notes.forEach((note) => {
-    generateNoteEl(note);
-  });
+
+  try {
+    // If the response is 400...
+    if (res.status >= 400) {
+      // That means no proper data was returned
+      Alert('Error 400: No data returned');
+    } else {
+      var notes = await res.json();
+
+      // For each note, generate the elements
+      notes.forEach((note) => {
+        generateNoteEl(note);
+      });
+    }
+
+    // If there is no network connection, execute the catch block function
+  } catch (error) {
+    alert('No network found!');
+  }
 };
 
 getNotes();
