@@ -10,6 +10,9 @@ const formInput = document.querySelectorAll('.note-input');
 const bodyInput = document.getElementById('note-body');
 const titleInput = document.getElementById('note-title');
 
+// // This is for reloading the window once
+// var reload = true;
+
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
 var validData = [false, false];
@@ -53,18 +56,15 @@ var getNotes = async () => {
   // WHEREAS, WHEN WE LAUNCH OUR APP, REFER TO THE PUBLIC URL
   // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
 
-  const res = await fetch(url, {
-    method: 'GET',
-    headers: {
-      accept: 'application/json; charset=utf-8',
-    },
-  });
-
   try {
-    // If the response is 400...
-    if (res.status >= 400) {
-      // That means no proper data was returned
-      Alert('Error 400: No data returned');
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        accept: 'application/json; charset=utf-8',
+      },
+    });
+    if (res.status > 400) {
+      alert('No data returned!');
     } else {
       var notes = await res.json();
 
@@ -74,9 +74,10 @@ var getNotes = async () => {
       });
     }
 
-    // If there is no network connection, execute the catch block function
+    // If the above fetch fails...
   } catch (error) {
-    alert('No network found!');
+    // Re-execute the fetch
+    getNotes();
   }
 };
 
@@ -84,8 +85,6 @@ var getNotes = async () => {
 var noteContainer = document.getElementById('note-list');
 function generateNoteEl(notes) {
   var noteEl = document.createElement('a');
-  // For the link in the anchor tag, return the ID as the query parameter
-  // noteEl.href = `/notes/preview?id=${notes.id}`;
   noteEl.href = `/notes/${notes.id}`;
   noteEl.classList.add(`note`, `note-${notes.id}`);
   noteEl.innerHTML = `
@@ -96,7 +95,6 @@ function generateNoteEl(notes) {
   alt="Trash Icon"
   />
   `;
-
   noteContainer.appendChild(noteEl);
 }
 

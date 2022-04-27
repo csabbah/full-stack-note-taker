@@ -11,7 +11,7 @@
     "Body": "This is body 2",
     "id": 2,
     "currentlyPosted": false,
-    "currentlySelected": false
+    "currentlySelected": true
   },
   {
     "Title": "This is note 3",
@@ -19,61 +19,5 @@
     "id": 3,
     "currentlyPosted": false,
     "currentlySelected": false
-  },
-  {
-    "Title": "Carls",
-    "Body": "body1",
-    "id": 4,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "bob",
-    "Body": "cdas",
-    "id": 5,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "Carls",
-    "Body": "Sabbbbb",
-    "id": 6,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "bob",
-    "Body": "cdasf",
-    "id": 7,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "Carlos is the bset",
-    "Body": "vadsgfds",
-    "id": 8,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "joeana",
-    "Body": "fadsff",
-    "id": 9,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "oyoooooo",
-    "Body": "geeneneeee",
-    "id": 10,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "adsffdadf",
-    "Body": "fdaboubdsfs",
-    "id": 11,
-    "currentlyPosted": false,
-    "currentlySelected": true
   }
 ]

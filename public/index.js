@@ -6,30 +6,27 @@ var getNotes = async () => {
   // WHEREAS, WHEN WE LAUNCH OUR APP, REFER TO THE PUBLIC URL
   // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
 
-  const res = await fetch(url, {
-    method: 'GET',
-    headers: {
-      accept: 'application/json; charset=utf-8',
-    },
-  });
-
   try {
-    // If the response is 400...
-    if (res.status >= 400) {
-      // That means no proper data was returned
-      Alert('Error 400: No data returned');
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        accept: 'application/json; charset=utf-8',
+      },
+    });
+    if (res.status > 400) {
+      alert('No data returned!');
     } else {
       var notes = await res.json();
-
       // For each note, generate the elements
       notes.forEach((note) => {
         generateNoteEl(note);
       });
     }
 
-    // If there is no network connection, execute the catch block function
+    // If the above fetch fails...
   } catch (error) {
-    alert('No network found!');
+    // Re-execute the fetch
+    getNotes();
   }
 };
 
