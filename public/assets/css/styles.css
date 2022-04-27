@@ -147,6 +147,7 @@ main {
   z-index: 3;
   cursor: pointer;
 }
+
 /* ------- Note body */
 #note-editor {
   margin-top: 10px;

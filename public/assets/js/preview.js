@@ -49,7 +49,7 @@ var noteContainer = document.getElementById('note-preview-list');
 function generateNoteEl(notes) {
   var noteEl = document.createElement('a');
   noteEl.classList.add(`note`, `note-${notes.id}`);
-  noteEl.href = `/notes/${notes.id}`;
+  // noteEl.href = `/notes/${notes.id}`;
   noteEl.innerHTML = `
   <p>${notes.Title}</p>
   <a href="#">

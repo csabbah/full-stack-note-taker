@@ -10,9 +10,6 @@ const formInput = document.querySelectorAll('.note-input');
 const bodyInput = document.getElementById('note-body');
 const titleInput = document.getElementById('note-title');
 
-// // This is for reloading the window once
-// var reload = true;
-
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
 var validData = [false, false];
@@ -67,7 +64,6 @@ var getNotes = async () => {
       alert('No data returned!');
     } else {
       var notes = await res.json();
-
       // For each note, generate the elements
       notes.forEach((note) => {
         generateNoteEl(note);

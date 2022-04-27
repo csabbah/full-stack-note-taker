@@ -11,7 +11,7 @@
     "Body": "This is body 2",
     "id": 2,
     "currentlyPosted": false,
-    "currentlySelected": true
+    "currentlySelected": false
   },
   {
     "Title": "This is note 3",
