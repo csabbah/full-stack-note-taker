@@ -5,8 +5,6 @@ const { addNote } = require('../lib/notes');
 const express = require('express');
 const router = express.Router();
 
-const path = require('path');
-
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 router.use(express.static('./public'));
