@@ -15,7 +15,7 @@
 
 ## Description
 
-This application will...
+This application allows users to add (write) notes to a custom built API database and retrieves their notes via fetch functions. Using the Express.js node framework, depending on the requests that the user makes, appropriate responses are returned. Responses include returning all notes and or auto selecting notes based on the id endpoint, adding new notes (that get auto selected upon hitting save), retrieving the API JSON data and displaying a landing page using the \* wildcard route.
 
 ## Installation
 
@@ -33,7 +33,7 @@ npm install
 
 ## Usage
 
-To start the server from your local (backend) run the following command in terminal:
+To start the server from your local machine (backend), run the following command in terminal:
 
 ```
 npm run dev
@@ -44,6 +44,7 @@ Otherwise, to view the application, you can visit the live page via the link bel
 ## Links
 
 Link to the live application:
+[View here](https://full-stack-note-taker.herokuapp.com/)
 
 ## Built With
 
