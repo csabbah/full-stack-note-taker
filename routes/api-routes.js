@@ -18,9 +18,10 @@ router.get('/notes', (req, res) => {
   res.json(noteDb);
 });
 
-var validData = true;
 // Handle post method - Upload notes to DB
 router.post('/notes', (req, res) => {
+  var validData = true;
+
   var newData = {
     // req.body == the FORM that initialized the post method and endpoint
     // while the .titleData and .bodyData == the 'name' parameters in the form inputs
@@ -34,7 +35,10 @@ router.post('/notes', (req, res) => {
   // Before we add the new data....
   noteDb.forEach((dbNote) => {
     // Check the database for similarity in the new notes that the user is attempting to post
-    if (newData.Title == dbNote.Title && newData.Body == dbNote.Body) {
+    if (
+      newData.Title.toLowerCase() == dbNote.Title.toLowerCase() &&
+      newData.Body.toLowerCase() == dbNote.Body.toLowerCase()
+    ) {
       // If it exists, set variable to false
       validData = false;
     }
@@ -51,6 +55,7 @@ router.post('/notes', (req, res) => {
     res.send(
       '<script>alert("Note already exists."); window.location.href = "/notes";</script>'
     );
+    validData = true;
   }
 });
 
