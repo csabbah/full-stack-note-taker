@@ -36,18 +36,10 @@ getNotes();
 var noteContainer = document.getElementById('note-list');
 function generateNoteEl(notes) {
   var noteEl = document.createElement('a');
-  // For the link in the anchor tag, return the ID as the query parameter
-  // noteEl.href = `/notes/preview?id=${notes.id}`;
-  noteEl.href = `/notes/preview`;
   noteEl.classList.add(`note`, `note-${notes.id}`);
   noteEl.innerHTML = `
   <p>${notes.Title}</p>
-  <img
-  class="trash trash-1"
-  src="./assets/images/trash.png"
-  alt="Trash Icon"
-  />
+  <i class="fa-solid fa-trash-can trash trash-1" aria-hidden="true"></i>
   `;
-
   noteContainer.appendChild(noteEl);
 }

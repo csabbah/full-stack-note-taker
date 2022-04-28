@@ -53,12 +53,7 @@ function generateNoteEl(notes) {
   noteEl.innerHTML = `
   <p>${notes.Title}</p>
   <a href="#">
-    <input type="hidden" name="_method" value="PUT"/>
-  <img
-  class="trash trash-1"
-  src="./assets/images/trash.png"
-  alt="Trash Icon"
-  />
+  <i class="fa-solid fa-trash-can trash trash-${notes.id}" aria-hidden="true"></i>
   </a>
   `;
   noteContainer.appendChild(noteEl);

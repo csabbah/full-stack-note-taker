@@ -1,7 +1,6 @@
 // This file executes all requests and responses via routers and root requests
 
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
-const { application } = require('express');
 const express = require('express');
 
 // Declare the port
@@ -32,11 +31,11 @@ const noteRouter = require('./routes/notes-routes.js');
 // Use and include '/users' endpoint before each notes route
 app.use('/notes', noteRouter);
 
+// app.delete('/expressions/:id', (req, res, next) => {
+//   res.send('hi');
+// });
 // ------- ------- ------- ------- ------- ------- ------- ------- WILDCARD ROUTE
 
-app.delete('/expressions/:id', (req, res, next) => {
-  res.send('hi');
-});
 // Return the main HTML page in the root endpoint
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/views/index.html'));

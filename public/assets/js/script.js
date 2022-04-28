@@ -85,11 +85,7 @@ function generateNoteEl(notes) {
   noteEl.classList.add(`note`, `note-${notes.id}`);
   noteEl.innerHTML = `
   <p>${notes.Title}</p>
-  <img
-  class="trash trash-1"
-  src="./assets/images/trash.png"
-  alt="Trash Icon"
-  />
+  <i class="fa-solid fa-trash-canfa-solid fa-trash-can trash trash-${notes.id}" aria-hidden="true"></i>
   `;
   noteContainer.appendChild(noteEl);
 }

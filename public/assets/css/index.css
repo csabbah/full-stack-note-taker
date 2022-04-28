@@ -118,13 +118,13 @@ main {
   text-decoration: none;
 }
 
-.note img {
-  width: 15px;
+.trash {
+  color: red;
+  position: relative;
+  pointer-events: all;
+  z-index: 3;
 }
 
-.trash {
-  cursor: pointer;
-}
 /* ------- Note body */
 #note-editor {
   margin-top: 10px;
