@@ -6,10 +6,19 @@
 // ------- ------- ------- ------- ------- ------- ------- ------- DECLARING OBJECTS FOR EVENT LISTENERS
 const saveBtn = document.querySelector('.save');
 const formInput = document.querySelectorAll('.note-input');
-
 const bodyInput = document.getElementById('note-body');
 const titleInput = document.getElementById('note-title');
 
+const fade = document.querySelector('.placeholder');
+var localFirstLaunch = localStorage.getItem('firstLaunch');
+parsedScore = JSON.parse(localFirstLaunch);
+if (!parsedScore) {
+  fade.className = ''; // Remove the effect
+} else {
+  firstLaunch = false;
+  localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
+  fade.className = 'first-launch';
+}
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
 var validData = [false, false];
@@ -45,6 +54,10 @@ formInput.forEach((item) => {
 saveBtn.addEventListener('click', () => {
   // In the HTML, we submit using the "POST" method and an action of ='/api/notes'
   document.querySelector('form').submit();
+
+  // Set first launch to false so we don't re-execute the fade every time we visit /notes/
+  firstLaunch = false;
+  localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
 });
 
 // Execute delete request and remove the appropriate element
@@ -108,7 +121,7 @@ var getNotes = async () => {
 };
 
 // Upon deleting a note, update all other elements to ensure consistency in label values
-// i.e. Update all links and labels starting value 0 and incrementing by 1
+// i.e. Update all links and labels (ids) starting value 0 and incrementing by 1
 function updateEl() {
   var noteList = document.querySelectorAll('.note');
   var trashList = document.querySelectorAll('.trash');
@@ -121,7 +134,7 @@ function updateEl() {
   });
 }
 
-// The bottom function will execute in getNotes() and it will generate the single note HTML elements using the notes data
+// Generate the single note HTML elements using the notes data
 var noteContainer = document.getElementById('note-list');
 function generateNoteEl(notes) {
   var singleNote = document.createElement('div');

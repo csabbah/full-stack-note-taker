@@ -16,11 +16,21 @@ main {
 }
 
 /* -------------------- Main container */
-
+@keyframes fade {
+  0% {
+    filter: blur(7px);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
 #main-container {
   width: 70%;
 }
 
+#main-container.first-launch {
+  animation: fade 0.2s ease-in-out;
+}
 /* -------------------- Main header */
 #main-header {
   height: 40px;

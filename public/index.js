@@ -30,8 +30,6 @@ var getNotes = async () => {
   }
 };
 
-getNotes();
-
 // The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
 var noteContainer = document.getElementById('note-list');
 function generateNoteEl(notes) {
@@ -43,3 +41,11 @@ function generateNoteEl(notes) {
   `;
   noteContainer.appendChild(noteEl);
 }
+
+//  Upon first load, set variable to true and store it in localstorage
+// This value will be extracted in script.js which will handle the faded animation
+// If first launch is true, apply the faded animation
+var firstLaunch = true;
+localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
+
+getNotes();

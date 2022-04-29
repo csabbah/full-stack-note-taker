@@ -19,13 +19,22 @@ main {
 /* -------------------- Landing page */
 #intro-container {
   position: relative;
-  width: 70%;
+  width: 69.5%;
   height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 2;
+}
+
+#intro-inner {
+  display: flex;
+  align-items: center;
+}
+.fa-book {
+  margin-right: 10px;
+  font-size: 40px;
 }
 
 #intro-container h1 {
@@ -91,6 +100,12 @@ main {
   align-items: center;
 }
 
+.trash {
+  color: red;
+  right: 5px;
+  font-size: 15px;
+}
+
 /* -------------------- Main body */
 
 #main-body {
@@ -116,13 +131,6 @@ main {
 .note {
   color: black;
   text-decoration: none;
-}
-
-.trash {
-  color: red;
-  position: relative;
-  pointer-events: all;
-  z-index: 3;
 }
 
 /* ------- Note body */
