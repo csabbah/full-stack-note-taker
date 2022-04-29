@@ -3,6 +3,12 @@
 // Fetches for the data from the database and generates the elements accordingly
 // Script is used in the public/notes-editor.html file
 
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    window.location.reload(); //reload page if it has been loaded from cache
+  }
+};
+
 // ------- ------- ------- ------- ------- ------- ------- ------- DECLARING OBJECTS FOR EVENT LISTENERS
 const saveBtn = document.querySelector('.save');
 const formInput = document.querySelectorAll('.note-input');

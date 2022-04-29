@@ -4,6 +4,13 @@
 // Additionally behind the screen, it will track what we click and what we note we post so we can auto select this note from here
 // Script is used in the public/notes-preview.html file
 
+// On page load, refresh the window so the data is up to date
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    window.location.reload(); //reload page if it has been loaded from cache
+  }
+};
+
 // Extract the data from the API database
 var getNotes = async () => {
   var url = '/api/notes';

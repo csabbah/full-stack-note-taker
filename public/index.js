@@ -1,3 +1,15 @@
+// On page load, refresh the window so the data is up to date
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    window.location.reload(); //reload page if it has been loaded from cache
+    // Upon first load, set variable to true and add it to localstorage.
+    // Then in the main page, after animation has occurred, set the variable to false
+    // so it does not re-fade every time you visit /notes/
+    var firstLaunch = true;
+    localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
+  }
+};
+
 // This file ensures that the accurate number of notes are shown even in the blurred intro screen
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
@@ -41,11 +53,5 @@ function generateNoteEl(notes) {
   `;
   noteContainer.appendChild(noteEl);
 }
-
-//  Upon first load, set variable to true and store it in localstorage
-// This value will be extracted in script.js which will handle the faded animation
-// If first launch is true, apply the faded animation
-var firstLaunch = true;
-localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
 
 getNotes();

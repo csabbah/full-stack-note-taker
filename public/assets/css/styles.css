@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  touch-action: manipulation; /* This removes double tap to zoom */
 }
 
 main {
