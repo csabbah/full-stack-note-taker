@@ -11,7 +11,7 @@
     "Body": "VGOIDSNgaviodsgv",
     "id": 1,
     "currentlyPosted": false,
-    "currentlySelected": true
+    "currentlySelected": false
   },
   {
     "Title": "adviodsnvionGIODNGIAOSFDSF",
@@ -19,5 +19,12 @@
     "id": 2,
     "currentlyPosted": false,
     "currentlySelected": false
+  },
+  {
+    "Title": "cadsds",
+    "Body": "vdavadfvds",
+    "id": 3,
+    "currentlyPosted": false,
+    "currentlySelected": true
   }
 ]

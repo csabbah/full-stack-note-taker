@@ -8,6 +8,9 @@
   touch-action: manipulation; /* This removes double tap to zoom */
 }
 
+body {
+  background-color: rgba(219, 221, 240, 0.1);
+}
 main {
   height: 100vh;
   width: 100vw;
@@ -27,6 +30,8 @@ main {
 }
 #main-container {
   width: 70%;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 #main-container.first-launch {
@@ -43,6 +48,7 @@ main {
 }
 
 #main-header p {
+  user-select: none;
   font-size: 15px;
   color: white;
 }
@@ -90,7 +96,6 @@ main {
 /* -------------------- Main body */
 
 #main-body {
-  border: 1px solid rgb(185, 185, 185);
   height: 400px;
   display: flex;
 }
