@@ -6,7 +6,6 @@ var noteContainer = document.getElementById('note-preview-list');
 // On page load, refresh the window so the data is up to date
 window.onpageshow = function (event) {
   if (event.persisted) {
-    window.location.pathname = '/notes/preview';
     window.location.reload(); //reload page if it has been loaded from cache
   }
 };

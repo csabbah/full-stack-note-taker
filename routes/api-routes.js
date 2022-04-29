@@ -59,9 +59,8 @@ router.delete('/notes/:id', (req, res) => {
   // Extract the note ID via the endpoint
   const noteId = req.params.id;
   // Then delete associated note from the database
-  deleteNote(noteDb, noteId);
-
-  res.json(noteId);
+  let newArr = deleteNote(noteDb, noteId);
+  res.json(newArr);
 });
 
 module.exports = router;
