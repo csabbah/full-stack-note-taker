@@ -1,8 +1,7 @@
-// This script handles the following:
-// Extract the data base and populates the HTML with data
-// Will handle the main function of being able to view the data based on the note you click
-// Additionally behind the screen, it will track what we click and what we note we post so we can auto select this note from here
-// Script is used in the public/notes-preview.html file
+var previewTitleEl = document.getElementById('note-preview-title');
+var previewBodyEl = document.getElementById('note-preview-body');
+var addBtn = document.querySelector('.add');
+var noteContainer = document.getElementById('note-preview-list');
 
 // On page load, refresh the window so the data is up to date
 window.onpageshow = function (event) {
@@ -11,12 +10,10 @@ window.onpageshow = function (event) {
     window.location.reload(); //reload page if it has been loaded from cache
   }
 };
-// window.location.pathname = '/notes/#';
 
 // Extract the data from the API database
 var getNotes = async () => {
   var url = '/api/notes';
-  // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
   try {
     const res = await fetch(url, {
       method: 'GET',
@@ -70,7 +67,6 @@ var getNotes = async () => {
 };
 
 // The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
-var noteContainer = document.getElementById('note-preview-list');
 function generateNoteEl(note) {
   var singleNote = document.createElement('div');
   singleNote.classList.add('singleNote-container');
@@ -85,9 +81,6 @@ function generateNoteEl(note) {
 
 // The below function will update the preview title and body in the preview page HTML
 // It will look through the Database and compare with the existing elements in the webpage
-var previewTitleEl = document.getElementById('note-preview-title');
-var previewBodyEl = document.getElementById('note-preview-body');
-
 var handleNoteEvent = (dbArr) => {
   var previewNotes = document.querySelectorAll('.note');
   previewNotes.forEach((previewNote) => {
@@ -119,6 +112,7 @@ var resetActive = (htmlNodeList) => {
     }
   });
 };
+
 // This auto selects the newest note that was created
 var selectNewestNote = (note) => {
   var previewNotes = document.querySelectorAll('.note');
@@ -136,11 +130,6 @@ var selectNote = (note) => {
   previewTitleEl.textContent = note.Title;
   previewNotes[note.id].classList.add('active');
 };
-
-var addBtn = document.querySelector('.add');
-addBtn.addEventListener('click', () => {
-  window.location.href = '/notes';
-});
 
 // Execute delete request and remove the appropriate element
 function deleteNote(id) {
@@ -177,3 +166,7 @@ function updateEl() {
 }
 
 getNotes();
+
+addBtn.addEventListener('click', () => {
+  window.location.href = '/notes';
+});

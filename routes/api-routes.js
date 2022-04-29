@@ -1,12 +1,6 @@
-// This file handles all API related requests, including, posting notes and returning data from the database
-
-// ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
 const { addNote, deleteNote } = require('../lib/notes');
 const express = require('express');
 const router = express.Router();
-
-const fs = require('fs');
-const path = require('path');
 
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
@@ -15,13 +9,12 @@ router.use(express.static('./public'));
 // Import the JSON data
 const noteDb = require('../data/db.json');
 
-// ------- ------- ------- ------- ------- ------- ------- ------- HANDLING API GET AND POST REQUESTS
-// Return a response to show the data by visiting the /api/notes endpoint
+// Handle GET method - Return all the notes
 router.get('/notes', (req, res) => {
   res.json(noteDb);
 });
 
-// Handle post method - Upload notes to DB
+// Handle POST method - Upload notes to the database
 router.post('/notes', (req, res) => {
   var validData = true;
   var newData = {
@@ -61,9 +54,11 @@ router.post('/notes', (req, res) => {
   }
 });
 
+// Handle DELETE method - Delete notes from the database
 router.delete('/notes/:id', (req, res) => {
   // Extract the note ID via the endpoint
   const noteId = req.params.id;
+  // Then delete associated note from the database
   deleteNote(noteDb, noteId);
 
   res.json(noteId);

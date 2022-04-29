@@ -1,7 +1,9 @@
-// This script handles the following:
-// Form submission and validation
-// Fetches for the data from the database and generates the elements accordingly
-// Script is used in the public/notes-editor.html file
+const saveBtn = document.querySelector('.save');
+const formInput = document.querySelectorAll('.note-input');
+const bodyInput = document.getElementById('note-body');
+const titleInput = document.getElementById('note-title');
+var noteContainer = document.getElementById('note-list');
+const fade = document.querySelector('.placeholder');
 
 window.onpageshow = function (event) {
   if (event.persisted) {
@@ -9,13 +11,8 @@ window.onpageshow = function (event) {
   }
 };
 
-// ------- ------- ------- ------- ------- ------- ------- ------- DECLARING OBJECTS FOR EVENT LISTENERS
-const saveBtn = document.querySelector('.save');
-const formInput = document.querySelectorAll('.note-input');
-const bodyInput = document.getElementById('note-body');
-const titleInput = document.getElementById('note-title');
-
-const fade = document.querySelector('.placeholder');
+// Handle the fade animation conditional
+// Only run the faded effect when going from '/' to '/notes'
 var localFirstLaunch = localStorage.getItem('firstLaunch');
 parsedScore = JSON.parse(localFirstLaunch);
 if (!parsedScore) {
@@ -25,6 +22,7 @@ if (!parsedScore) {
   localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
   fade.className = 'first-launch';
 }
+
 // This will listen for keyup event listeners on the inputs
 // If both inputs have data, THEN reveal the save button
 var validData = [false, false];
@@ -56,16 +54,6 @@ formInput.forEach((item) => {
   });
 });
 
-// When the user clicks on the save button, extract the current values and submit the form
-saveBtn.addEventListener('click', () => {
-  // In the HTML, we submit using the "POST" method and an action of ='/api/notes'
-  document.querySelector('form').submit();
-
-  // Set first launch to false so we don't re-execute the fade every time we visit /notes/
-  firstLaunch = false;
-  localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
-});
-
 // Execute delete request and remove the appropriate element
 function deleteNote(id) {
   fetch(`/api/notes/${id}`, {
@@ -85,11 +73,10 @@ function deleteNote(id) {
     }
   });
 }
+
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
   var url = '/api/notes';
-  // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
-
   try {
     const res = await fetch(url, {
       method: 'GET',
@@ -141,7 +128,6 @@ function updateEl() {
 }
 
 // Generate the single note HTML elements using the notes data
-var noteContainer = document.getElementById('note-list');
 function generateNoteEl(notes) {
   var singleNote = document.createElement('div');
   singleNote.classList.add('singleNote-container');
@@ -156,3 +142,13 @@ function generateNoteEl(notes) {
 }
 
 getNotes();
+
+// When the user clicks on the save button, extract the current values and submit the form
+saveBtn.addEventListener('click', () => {
+  // In the HTML, we submit using the "POST" method and an action of ='/api/notes'
+  document.querySelector('form').submit();
+
+  // Set first launch to false so we don't re-execute the fade every time we visit /notes/
+  firstLaunch = false;
+  localStorage.setItem('firstLaunch', JSON.stringify(firstLaunch));
+});
