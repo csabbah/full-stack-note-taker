@@ -12,12 +12,12 @@ window.onpageshow = function (event) {
 
 // Extract the data from the API database
 var getNotes = async () => {
-  var url = 'https://full-stack-note-taker.herokuapp.com/api/notes';
+  var url = '/api/notes';
   try {
     const res = await fetch(url, {
       method: 'GET',
       headers: {
-        accept: 'application/json; charset=utf-8',
+        'Content-Type': 'application/json',
       },
     });
     if (res.status > 400) {
@@ -132,10 +132,10 @@ var selectNote = (note) => {
 
 // Execute delete request and remove the appropriate element
 function deleteNote(id) {
-  fetch(`https://full-stack-note-taker.herokuapp.com/api/notes/${id}`, {
+  fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
-      accept: 'application/json; charset=utf-8',
+      'Content-Type': 'application/json',
     },
   });
   // After data has been deleted from the JSON database, remove the element from the DOM
