@@ -1,9 +1,12 @@
 // This file handles all API related requests, including, posting notes and returning data from the database
 
 // ------- ------- ------- ------- ------- ------- ------- ------- IMPORTING AND DECLARING ROOT OBJECTS
-const { addNote } = require('../lib/notes');
+const { addNote, deleteNote } = require('../lib/notes');
 const express = require('express');
 const router = express.Router();
+
+const fs = require('fs');
+const path = require('path');
 
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
@@ -21,13 +24,12 @@ router.get('/notes', (req, res) => {
 // Handle post method - Upload notes to DB
 router.post('/notes', (req, res) => {
   var validData = true;
-
   var newData = {
     // req.body == the FORM that initialized the post method and endpoint
     // while the .titleData and .bodyData == the 'name' parameters in the form inputs
     Title: req.body.titleData,
     Body: req.body.bodyData,
-    id: noteDb.length + 1,
+    id: noteDb.length,
     currentlyPosted: true,
     currentlySelected: false,
   };
@@ -59,8 +61,12 @@ router.post('/notes', (req, res) => {
   }
 });
 
-// router.delete('/notes/:id', (req, res) => {
-//   res.send('DELETE Request Called');
-// });
+router.delete('/notes/:id', (req, res) => {
+  // Extract the note ID via the endpoint
+  const noteId = req.params.id;
+  deleteNote(noteDb, noteId);
+
+  res.json(noteId);
+});
 
 module.exports = router;

@@ -43,14 +43,32 @@ formInput.forEach((item) => {
 
 // When the user clicks on the save button, extract the current values and submit the form
 saveBtn.addEventListener('click', () => {
+  // In the HTML, we submit using the "POST" method and an action of ='/api/notes'
   document.querySelector('form').submit();
 });
 
+// Execute delete request and remove the appropriate element
+function deleteNote(id) {
+  fetch(`/api/notes/${id}`, {
+    method: 'DELETE',
+    headers: {
+      accept: 'application/json; charset=utf-8',
+    },
+  });
+  // After data has been deleted from the JSON database, remove the element from the DOM
+  var allNotes = document.querySelectorAll('.singleNote-container');
+  allNotes.forEach((noteEl) => {
+    // Extract all the IDs of the active elements
+    var noteElId = noteEl.childNodes[0].classList[3].split('-')[1];
+    // The id in this case would be the element associated with the trash icon we click on
+    if (id == noteElId) {
+      noteEl.remove();
+    }
+  });
+}
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
-  // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we include the endpoint
   var url = '/api/notes';
-  // WHEREAS, WHEN WE LAUNCH OUR APP, REFER TO THE PUBLIC URL
   // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
 
   try {
@@ -68,6 +86,18 @@ var getNotes = async () => {
       notes.forEach((note) => {
         generateNoteEl(note);
       });
+      // Add the event listeners for the trash buttons
+      var deleteBtns = document.querySelectorAll('.trash');
+      deleteBtns.forEach((button) => {
+        button.addEventListener('click', (e) => {
+          // Extract the ID from the trash class which is associated with the note id
+          var noteId = e.target.classList[3].split('-')[1];
+          // Execute deleteNote() with the given id (uses delete method)
+          deleteNote(noteId);
+          updateEl();
+        });
+      });
+      return notes;
     }
 
     // If the above fetch fails...
@@ -77,17 +107,33 @@ var getNotes = async () => {
   }
 };
 
-// The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
+// Upon deleting a note, update all other elements to ensure consistency in label values
+// i.e. Update all links and labels starting value 0 and incrementing by 1
+function updateEl() {
+  var noteList = document.querySelectorAll('.note');
+  var trashList = document.querySelectorAll('.trash');
+  noteList.forEach((note, index) => {
+    note.href = `/notes/${index}`;
+    note.className = `note note-${index}`;
+  });
+  trashList.forEach((note, index) => {
+    note.className = `fa-solid fa-trash-can trash trash-${index}`;
+  });
+}
+
+// The bottom function will execute in getNotes() and it will generate the single note HTML elements using the notes data
 var noteContainer = document.getElementById('note-list');
 function generateNoteEl(notes) {
+  var singleNote = document.createElement('div');
+  singleNote.classList.add('singleNote-container');
+  singleNote.innerHTML = `<i class="fa-solid fa-trash-can trash trash-${notes.id}" aria-hidden="true"></i>`;
   var noteEl = document.createElement('a');
   noteEl.href = `/notes/${notes.id}`;
   noteEl.classList.add(`note`, `note-${notes.id}`);
-  noteEl.innerHTML = `
-  <p>${notes.Title}</p>
-  <i class="fa-solid fa-trash-canfa-solid fa-trash-can trash trash-${notes.id}" aria-hidden="true"></i>
-  `;
-  noteContainer.appendChild(noteEl);
+  noteEl.innerHTML = `<p>${notes.Title}</p>`;
+
+  singleNote.appendChild(noteEl);
+  noteContainer.appendChild(singleNote);
 }
 
 getNotes();

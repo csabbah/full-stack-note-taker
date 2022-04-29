@@ -1,22 +1,15 @@
 [
   {
-    "Title": "note1",
-    "Body": "body1",
+    "Title": "Carls",
+    "Body": "Sabbbbb",
+    "id": 0,
+    "currentlyPosted": false,
+    "currentlySelected": false
+  },
+  {
+    "Title": "vdaiop",
+    "Body": "ngasogfds",
     "id": 1,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "This is note 2",
-    "Body": "This is body 2",
-    "id": 2,
-    "currentlyPosted": false,
-    "currentlySelected": false
-  },
-  {
-    "Title": "This is note 3",
-    "Body": "This is body 3",
-    "id": 3,
     "currentlyPosted": false,
     "currentlySelected": false
   }

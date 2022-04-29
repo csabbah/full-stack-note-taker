@@ -21,6 +21,7 @@ const noteDb = require('../data/db.json');
 router.get('/:id', function (req, res) {
   // Use the id of the note (in the url) to auto select the note with matching id from the database
   autoSelect(noteDb, req.params.id);
+
   // Set all 'recentlyPosted' booleans in the database to false so it doesn't auto click on any of them when previewing notes
   removeRecent(noteDb);
   res.sendFile(path.join(__dirname, '../public/views/notes-preview.html'));

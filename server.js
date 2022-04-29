@@ -31,9 +31,6 @@ const noteRouter = require('./routes/notes-routes.js');
 // Use and include '/users' endpoint before each notes route
 app.use('/notes', noteRouter);
 
-// app.delete('/expressions/:id', (req, res, next) => {
-//   res.send('hi');
-// });
 // ------- ------- ------- ------- ------- ------- ------- ------- WILDCARD ROUTE
 
 // Return the main HTML page in the root endpoint

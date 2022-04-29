@@ -137,19 +137,27 @@ main {
   z-index: 1;
 }
 
-.note i:hover {
+.singleNote-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.singleNote-container i:hover {
   transform: scale(1.2);
 }
 
-.note i:active {
+.singleNote-container i:active {
   transform: scale(1);
 }
 
 .trash {
   color: red;
-  position: relative;
-  pointer-events: all;
+  position: absolute;
+  right: 5px;
   z-index: 3;
+  font-size: 15px;
+  pointer-events: all;
   cursor: pointer;
 }
 

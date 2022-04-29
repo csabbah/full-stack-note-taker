@@ -6,9 +6,7 @@
 
 // Extract the data from the API database
 var getNotes = async () => {
-  // IMPORTANT - BECAUSE WE'RE  IN LOCAL, IT'S TAKING THIS PATH 'localhost:3000' by default so we include the endpoint
   var url = '/api/notes';
-  // WHEREAS, WHEN WE LAUNCH OUR APP, REFER TO THE PUBLIC URL
   // var publicUrl = 'https://full-stack-note-taker.herokuapp.com/api/notes';
   try {
     const res = await fetch(url, {
@@ -21,9 +19,15 @@ var getNotes = async () => {
       alert('No data returned!');
     } else {
       var notes = await res.json();
+      // Assign an id to all existing notes and increment by each note
+      notes.forEach((note, index) => {
+        note.id = index;
+      });
+
       // For each note, generate the elements
       notes.forEach((note) => {
         generateNoteEl(note);
+
         // When we visit this preview page, if the note was previously added, auto select it
         if (note.currentlyPosted) {
           selectNewestNote(note);
@@ -31,6 +35,7 @@ var getNotes = async () => {
         if (note.currentlySelected) {
           selectNote(note);
         }
+
         handleNoteEvent(notes);
 
         // To handle deleting items from the data base
@@ -46,17 +51,16 @@ var getNotes = async () => {
 
 // The bottom function will execute in the getNotes() function and it will generate the HTML elements using the notes data
 var noteContainer = document.getElementById('note-preview-list');
-function generateNoteEl(notes) {
+function generateNoteEl(note) {
+  var singleNote = document.createElement('div');
+  singleNote.classList.add('singleNote-container');
+  singleNote.innerHTML = `<i class="fa-solid fa-trash-can trash trash-${note.id}" aria-hidden="true"></i>`;
   var noteEl = document.createElement('a');
-  noteEl.classList.add(`note`, `note-${notes.id}`);
-  // noteEl.href = `/notes/${notes.id}`;
-  noteEl.innerHTML = `
-  <p>${notes.Title}</p>
-  <a href="#">
-  <i class="fa-solid fa-trash-can trash trash-${notes.id}" aria-hidden="true"></i>
-  </a>
-  `;
-  noteContainer.appendChild(noteEl);
+  noteEl.classList.add(`note`, `note-${note.id}`);
+  noteEl.innerHTML = `<p>${note.Title}</p>`;
+
+  singleNote.appendChild(noteEl);
+  noteContainer.appendChild(singleNote);
 }
 
 // The below function will update the preview title and body in the preview page HTML
@@ -67,22 +71,8 @@ var previewBodyEl = document.getElementById('note-preview-body');
 var handleNoteEvent = (dbArr) => {
   var previewNotes = document.querySelectorAll('.note');
   previewNotes.forEach((previewNote) => {
-    // Initially if a note has an active class (meaning it's currently displayed), remove href so we don't re-fetch
-    // Additionally, set cursor to default
-    if (previewNote.classList.contains('active')) {
-      previewNote.style.cursor = 'default';
-      previewNote.style.pointerEvents = 'none';
-    }
     previewNote.addEventListener('click', () => {
-      previewNotes.forEach((previewNote) => {
-        if (previewNote.classList.contains('active')) {
-          previewNote.style.cursor = 'default';
-          previewNote.style.pointerEvents = 'none';
-        } else {
-          previewNote.style.cursor = 'pointer';
-          previewNote.style.pointerEvents = 'all';
-        }
-      });
+      previewNote.classList.add('active');
       dbArr.forEach((dbNote) => {
         // If the database id matches with the note id of the existing element...
         if (dbNote.id == previewNote.classList[1].split('-')[1]) {
@@ -115,15 +105,16 @@ var selectNewestNote = (note) => {
   resetActive(previewNotes);
   previewBodyEl.textContent = note.Body;
   previewTitleEl.textContent = note.Title;
-  previewNotes[previewNotes.length - 1].classList.add('active');
+  previewNotes[previewNotes.length].classList.add('active');
 };
 
 // This auto selects the selected note
 var selectNote = (note) => {
   var previewNotes = document.querySelectorAll('.note');
+  resetActive(previewNotes);
   previewBodyEl.textContent = note.Body;
   previewTitleEl.textContent = note.Title;
-  previewNotes[note.id - 1].classList.add('active');
+  previewNotes[note.id].classList.add('active');
 };
 
 var addBtn = document.querySelector('.add');
