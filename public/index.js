@@ -14,7 +14,7 @@ window.onpageshow = function (event) {
 // This file ensures that the accurate number of notes are shown even in the blurred intro screen
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
-  var url = '/api/notes';
+  var url = 'https://full-stack-note-taker.herokuapp.com/api/notes';
 
   try {
     const res = await fetch(url, {

@@ -56,7 +56,7 @@ formInput.forEach((item) => {
 
 // Execute delete request and remove the appropriate element
 function deleteNote(id) {
-  fetch(`/api/notes/${id}`, {
+  fetch(`https://full-stack-note-taker.herokuapp.com/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       accept: 'application/json; charset=utf-8',
@@ -76,7 +76,7 @@ function deleteNote(id) {
 
 // Extract the data from the API and populate our local array with it
 var getNotes = async () => {
-  var url = '/api/notes';
+  var url = 'https://full-stack-note-taker.herokuapp.com/api/notes';
   try {
     const res = await fetch(url, {
       method: 'GET',
