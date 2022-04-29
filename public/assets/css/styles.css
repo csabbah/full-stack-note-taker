@@ -99,11 +99,13 @@ main {
   overflow-y: scroll;
   border-right: 1px solid rgb(185, 185, 185);
   width: 30%;
+  transition: 0.1s all ease-in-out;
 }
 
 #note-list a:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.1);
+  transition: 0.1s all ease-in-out;
 }
 #note-list a {
   user-select: none;
@@ -123,6 +125,7 @@ main {
   overflow-y: scroll;
   border-right: 1px solid rgb(185, 185, 185);
   width: 30%;
+  transition: 0.1s all ease-in-out;
 }
 
 #note-preview-list a {
@@ -132,6 +135,7 @@ main {
 #note-preview-list a:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.1);
+  transition: 0.1s all ease-in-out;
 }
 
 .note {

@@ -29,10 +29,30 @@ main {
   z-index: 2;
 }
 
+#intro-container a {
+  margin-top: 5px;
+  font-size: 25px;
+  color: black;
+  border-bottom: 1.7px solid black;
+  text-decoration: none;
+  transition: 0.1s all ease-in-out;
+}
+
+#intro-container a:hover {
+  transform: scale(1.05);
+  color: rgb(73, 207, 162);
+  border-bottom: 1.7px solid rgb(73, 207, 162);
+  transition: 0.1s all ease-in-out;
+}
+#intro-container a:active {
+  transform: scale(1);
+}
+
 #intro-inner {
   display: flex;
   align-items: center;
 }
+
 .fa-book {
   margin-right: 10px;
   font-size: 40px;
@@ -41,14 +61,7 @@ main {
 #intro-container h1 {
   color: black;
   font-size: 50px;
-}
-
-#intro-container a {
-  margin-top: 5px;
-  font-size: 25px;
-  color: black;
-  border-bottom: 2px solid black;
-  text-decoration: none;
+  user-select: none;
 }
 
 /* -------------------- Main container */

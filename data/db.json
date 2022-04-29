@@ -4,7 +4,7 @@
     "Body": "casdcdsdvsdvds",
     "id": 0,
     "currentlyPosted": false,
-    "currentlySelected": false
+    "currentlySelected": true
   },
   {
     "Title": "cavoidnoi",
@@ -25,6 +25,6 @@
     "Body": "ngofdiangdf",
     "id": 3,
     "currentlyPosted": false,
-    "currentlySelected": true
+    "currentlySelected": false
   }
 ]
