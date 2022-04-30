@@ -200,7 +200,7 @@ main {
 }
 
 .note-input:nth-child(1) {
-  width: 604px;
+  width: 583px;
   font-size: 30px;
 }
 
@@ -209,8 +209,7 @@ main {
   width: 584px;
   height: 303px;
   resize: none;
-  padding-top: 10px;
-  text-indent: 10px;
+  padding: 10px 10px;
   background-color: rgba(0, 0, 0, 0.025);
   border-radius: 5px;
   top: 40px;

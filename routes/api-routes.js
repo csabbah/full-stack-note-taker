@@ -27,30 +27,36 @@ router.post('/notes', (req, res) => {
     currentlySelected: false,
   };
 
-  // Before we add the new data....
-  noteDb.forEach((dbNote) => {
-    // Check the database for similarity in the new notes that the user is attempting to post
-    if (
-      newData.Title.toLowerCase() == dbNote.Title.toLowerCase() &&
-      newData.Body.toLowerCase() == dbNote.Body.toLowerCase()
-    ) {
-      // If it exists, set variable to false
-      validData = false;
-    }
-  });
-
-  // If the data is unique, then we write it
-  if (validData) {
-    // Push the newData to the noteDb and writeFile (push)
-    addNote(noteDb, newData, res);
-    // Send the preview.html webpage as the response
-    res.redirect(`/notes/${newData.id}`);
-  } else {
-    // Otherwise don't write
+  if (newData.Body == '' || newData.Title == '') {
     res.send(
-      '<script>alert("Note already exists."); window.location.href = "/notes";</script>'
+      '<script>alert("Invalid Data, please fill in both fields."); window.location.href = "/notes";</script>'
     );
-    validData = true;
+  } else {
+    // Before we add the new data....
+    noteDb.forEach((dbNote) => {
+      // Check the database for similarity in the new notes that the user is attempting to post
+      if (
+        newData.Title.toLowerCase() == dbNote.Title.toLowerCase() &&
+        newData.Body.toLowerCase() == dbNote.Body.toLowerCase()
+      ) {
+        // If it exists, set variable to false
+        validData = false;
+      }
+    });
+
+    // If the data is unique, then we write it
+    if (validData) {
+      // Push the newData to the noteDb and writeFile (push)
+      addNote(noteDb, newData, res);
+      // Send the preview.html webpage as the response
+      res.redirect(`/notes/${newData.id}`);
+    } else {
+      // Otherwise don't write
+      res.send(
+        '<script>alert("Note already exists."); window.location.href = "/notes";</script>'
+      );
+      validData = true;
+    }
   }
 });
 
