@@ -4,7 +4,7 @@
     "Body": "You da best",
     "id": 0,
     "currentlyPosted": false,
-    "currentlySelected": true
+    "currentlySelected": false
   },
   {
     "Title": "Thank you",
@@ -15,7 +15,7 @@
   },
   {
     "Title": "I hope",
-    "Body": "You have a great day/night",
+    "Body": "You have great day/night",
     "id": 2,
     "currentlyPosted": false,
     "currentlySelected": false
