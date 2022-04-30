@@ -17,8 +17,6 @@
 
 This application allows users to add (write) notes to a custom built API database and to be able view their notes. Using Express.js, depending on the requests, the appropriate responses will return that handle specific events. Some of the responses include returning all notes using the GET method, auto selecting notes based on ID endpoint, adding new notes using the POST method, deleting notes using the DELETE method, returning the JSON data and so forth.
 
-![Preview](https://user-images.githubusercontent.com/91699101/166082658-da8944c3-9d71-43f6-988f-f2471e8866de.png)
-
 ## Installation
 
 1. To install application, clone the main project via the HTTP or SSH link on github.
@@ -70,3 +68,5 @@ If you have questions about this application or general inquiry, please reach ou
 ## License
 
 This project is covered under the MIT License.
+
+![Preview](https://user-images.githubusercontent.com/91699101/166082658-da8944c3-9d71-43f6-988f-f2471e8866de.png)
