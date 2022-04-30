@@ -15,7 +15,7 @@
 
 ## Description
 
-This application allows users to add (write) notes to a custom built API database and retrieves their notes via API fetch functions. Using Express.js, depending on the requests, the appropriate responses will return. Some of the responses include returning all notes using the GET method, auto selecting notes based on ID endpoint, adding new notes using the POST method, deleting notes using the DELETE method, returning the JSON data and so forth.
+This application allows users to add (write) notes to a custom built API database and to be able view their notes. Using Express.js, depending on the requests, the appropriate responses will return that handle specific events. Some of the responses include returning all notes using the GET method, auto selecting notes based on ID endpoint, adding new notes using the POST method, deleting notes using the DELETE method, returning the JSON data and so forth.
 
 ## Installation
 
