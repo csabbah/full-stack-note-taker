@@ -138,6 +138,10 @@ function deleteNote(id) {
       'Content-Type': 'application/json',
     },
   });
+  // If the note was originally selected then the trash event triggers, remove the elements
+  var activePreviewEl = document.getElementById('note-preview');
+  activePreviewEl.innerHTML = '';
+
   // After data has been deleted from the JSON database, remove the element from the DOM
   var allNotes = document.querySelectorAll('.singleNote-container');
   allNotes.forEach((noteEl) => {
