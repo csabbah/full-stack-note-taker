@@ -11,6 +11,9 @@ window.onpageshow = function (event) {
   }
 };
 
+// On application load, focus on the first input field
+document.getElementById('note-title').focus();
+
 // Handle the fade animation conditional
 // Only run the faded effect when going from '/' to '/notes'
 var localFirstLaunch = localStorage.getItem('firstLaunch');
