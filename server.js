@@ -9,7 +9,7 @@ const path = require('path');
 // These allow us to parse/fetch JSON data and serves our static files in our public folder
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 // Require our api routes and include all the methods
 const apiRouter = require('./routes/api-routes.js');

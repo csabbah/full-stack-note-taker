@@ -103,6 +103,7 @@ var getNotes = async () => {
           updateEl();
         });
       });
+
       return notes;
     }
 
